@@ -8,7 +8,7 @@ javascript:(function() {
     document.body.removeChild(el);
   };
   let notes = "";
-  $("a.selector.selected:visible").each(function(index, element) {
+  $(".story .selector:visible > path").each(function(index, element) {
     let $div = $(element).closest("div.story");
     let story_id = $div.data("id");
     let story_text = $div.find("span.story_name span.tracker_markup").text();
