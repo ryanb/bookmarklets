@@ -14,7 +14,7 @@ javascript:(function() {
     let story_text = $div.find("span.story_name span.tracker_markup").text();
     let line = `* [${story_text}](https://www.pivotaltracker.com/story/show/${story_id})\n`;
     if (!notes.includes(line)) {
-      notes += line;
+      notes = line + notes;
     }
   });
   copyToClipboard(notes);
