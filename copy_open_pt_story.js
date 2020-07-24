@@ -13,7 +13,7 @@ javascript:(function() {
     alert("Unable to find an opened story");
     return;
   }
-  let storyId = $story.closest(".story.model").attr("data-id");
+  let storyUrl = $story.find(".clipboard_button").attr("data-clipboard-text");
   let storyName = $story.find("[data-aid=name]").val();
-  copyToClipboard(`[${storyName}](https://www.pivotaltracker.com/story/show/${storyId})`);
+  copyToClipboard(`[${storyName}](${storyUrl})`);
 })();
