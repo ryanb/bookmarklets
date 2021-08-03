@@ -1,3 +1,4 @@
+// The URL ends with `?preview=0` so Slack doesn't generate a preview
 javascript:(function() {
   function copyToClipboard(str) {
     const el = document.createElement("textarea");
@@ -12,7 +13,7 @@ javascript:(function() {
     let $div = $(element).closest("div.story");
     let story_id = $div.data("id");
     let story_text = $div.find("span.story_name span.tracker_markup").text();
-    let line = `* ${story_text} | https://www.pivotaltracker.com/story/show/${story_id}\n`;
+    let line = `* ${story_text} | https://www.pivotaltracker.com/story/show/${story_id}?preview=0\n`;
     if (!notes.includes(line)) {
       notes = line + notes;
     }
