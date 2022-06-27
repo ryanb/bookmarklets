@@ -1,7 +1,7 @@
 // Copies a list of selected Linear issues as Markdown text.
 // It only works in List view, not Board view.
 // Copy and paste the code below into the address part of a bookmark.
-javascript:(function() {
+javascript: (function () {
   function copyToClipboard(str) {
     const el = document.createElement("textarea");
     el.value = str;
@@ -21,7 +21,7 @@ javascript:(function() {
         title += titleElement.childNodes[i].textContent;
       }
     }
-    notes += `* [${title}](${element.href})\n`;
+    notes += `- [${title}](${element.href})\n`;
   }
   copyToClipboard(notes);
   const checkboxes = document.querySelectorAll(

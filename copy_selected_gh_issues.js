@@ -1,4 +1,4 @@
-javascript:(function() {
+javascript: (function () {
   function copyToClipboard(str) {
     const el = document.createElement("textarea");
     el.value = str;
@@ -6,16 +6,20 @@ javascript:(function() {
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
-  };
+  }
   let notes = "";
-  let elements = document.querySelectorAll(".js-issue-row.selected .js-navigation-open");
+  let elements = document.querySelectorAll(
+    ".js-issue-row.selected .js-navigation-open"
+  );
   elements = [...elements].reverse();
   for (const element of elements) {
     let number = element.id.split("_")[1];
-    notes += `* [${element.textContent} (#${number})](${element.href})\n`;
+    notes += `- [${element.textContent} (#${number})](${element.href})\n`;
   }
   copyToClipboard(notes);
-  let checkboxes = document.querySelectorAll(".js-issue-row.selected input[type='checkbox']");
+  let checkboxes = document.querySelectorAll(
+    ".js-issue-row.selected input[type='checkbox']"
+  );
   for (const checkbox of checkboxes) {
     checkbox.click();
   }
