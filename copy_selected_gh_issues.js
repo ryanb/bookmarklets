@@ -9,7 +9,7 @@ javascript: (function () {
   }
   let notes = "";
   let elements = document.querySelectorAll(
-    ".js-issue-row.selected .js-navigation-open"
+    ".js-issue-row:has(:checked) .js-navigation-open"
   );
   elements = [...elements].reverse();
   for (const element of elements) {
@@ -18,7 +18,7 @@ javascript: (function () {
   }
   copyToClipboard(notes);
   let checkboxes = document.querySelectorAll(
-    ".js-issue-row.selected input[type='checkbox']"
+    ".js-issue-row input[type='checkbox']:checked"
   );
   for (const checkbox of checkboxes) {
     checkbox.click();
