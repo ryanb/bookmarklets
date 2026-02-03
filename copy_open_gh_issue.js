@@ -7,11 +7,10 @@ javascript:(function() {
     document.execCommand("copy");
     document.body.removeChild(el);
   };
-  let name = document.querySelector(".js-issue-title").textContent.trim();
-  let number = document.querySelector(".gh-header-number").textContent.trim();
-  let url = window.location.href;
-  let addedLines = document.querySelector("#diffstat .color-fg-success").textContent.trim();
-  let removedLines = document.querySelector("#diffstat .color-fg-danger").textContent.trim();
+  const [name, number] = [...document.querySelectorAll("[data-component='TitleArea'] h1 span")].map((element) => element.textContent);
+  const url = window.location.href;
+  const addedLines = document.querySelector("[data-component='PH_Navigation'] span.fgColor-success").textContent.trim();
+  const removedLines = document.querySelector("[data-component='PH_Navigation'] span.fgColor-danger").textContent.trim();
   copyToClipboard(`[${name} (${number})](${url}) [${addedLines}, ${removedLines}]`);
   console.log("Copied current GitHub issue to clipboard!");
 })();
