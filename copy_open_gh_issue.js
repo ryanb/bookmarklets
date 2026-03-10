@@ -10,9 +10,14 @@ javascript:(function() {
   let name = document.querySelector("h1.gh-header-title bdi")?.textContent.trim();
   let number = document.querySelector("h1.gh-header-title span.gh-header-number, h1.gh-header-title span.color-fg-muted")?.textContent.trim();
   if (!name || !number) {
-    const spans = [...document.querySelectorAll("[data-component='TitleArea'] h1 span")].map((element) => element.textContent);
-    name = spans[0];
-    number = spans[1];
+    name = document.querySelector("[data-component='TitleArea'] h1 .markdown-title")?.textContent.trim();
+    const spans = document.querySelectorAll("[data-component='TitleArea'] h1 span");
+    for (const span of spans) {
+      if (/^#\d+$/.test(span.textContent.trim())) {
+        number = span.textContent.trim();
+        break;
+      }
+    }
   }
   const url = window.location.href;
   let addedLines = document.querySelector("#diffstat span.color-fg-success")?.textContent.trim();
