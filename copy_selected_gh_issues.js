@@ -11,15 +11,25 @@ javascript: (function () {
   let elements = document.querySelectorAll(
     ".js-issue-row:has(:checked) .js-navigation-open"
   );
+  if (elements.length === 0) {
+    elements = document.querySelectorAll(
+      "li:has(input[data-listview-component='selection-input']:checked) a[data-testid='listitem-title-link']"
+    );
+  }
   elements = [...elements].reverse();
   for (const element of elements) {
-    let number = element.id.split("_")[1];
-    notes += `- [${element.textContent} (#${number})](${element.href})\n`;
+    const number = element.href.split("/").pop();
+    notes += `- [${element.textContent.trim()} (#${number})](${element.href})\n`;
   }
   copyToClipboard(notes);
   let checkboxes = document.querySelectorAll(
     ".js-issue-row input[type='checkbox']:checked"
   );
+  if (checkboxes.length === 0) {
+    checkboxes = document.querySelectorAll(
+      "input[data-listview-component='selection-input']:checked"
+    );
+  }
   for (const checkbox of checkboxes) {
     checkbox.click();
   }
