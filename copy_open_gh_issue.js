@@ -15,8 +15,8 @@ javascript:(function() {
   let addedLines = document.querySelector("#diffstat span.color-fg-success")?.textContent.trim();
   let removedLines = document.querySelector("#diffstat span.color-fg-danger")?.textContent.trim();
   if (!addedLines || !removedLines) {
-    addedLines = document.querySelector("[data-component='PH_Navigation'] span.fgColor-success")?.textContent.trim() || "+0";
-    removedLines = document.querySelector("[data-component='PH_Navigation'] span.fgColor-danger")?.textContent.trim() || "-0";
+    addedLines = document.querySelector("[data-component='PageHeader'] span.fgColor-success")?.textContent.trim() || "+0";
+    removedLines = document.querySelector("[data-component='PageHeader'] span.fgColor-danger")?.textContent.trim() || "-0";
   }
   copyToClipboard(`[${name}](${url}) [${addedLines}, ${removedLines}]`);
   console.log("Copied current GitHub issue to clipboard!");
